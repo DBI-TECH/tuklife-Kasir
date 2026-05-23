@@ -1,1 +1,1 @@
-edit semua data
+rubah
