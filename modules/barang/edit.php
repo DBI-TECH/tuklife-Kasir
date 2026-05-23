@@ -1,1 +1,1 @@
-rubah
+ubah data
