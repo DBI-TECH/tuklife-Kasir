@@ -5,7 +5,6 @@ CREATE TABLE barang (
     id_barang INT AUTO_INCREMENT PRIMARY KEY,
     nama_barang VARCHAR(100),
     harga INT,
-    stok INT,
     tipe VARCHAR(50)
 ) AUTO_INCREMENT=1;
 
@@ -33,13 +32,20 @@ CREATE TABLE stok (
 ) AUTO_INCREMENT=1;
 
 -- Contoh data barang per tipe untuk transaksi (mocktail, milk base, coffe, snack)
-INSERT INTO barang (id_barang, nama_barang, harga, stok, tipe) VALUES
-    (1, 'Blue Ocean', 15000, 50, 'mocktail'),
-    (2, 'Mocktail A', 20000, 50, 'mocktail'),
-    (3, 'Mocktail B', 25000, 50, 'mocktail'),
-    (4, 'Milk Base A', 18000, 50, 'milk base'),
-    (5, 'Milk Base B', 22000, 50, 'milk base'),
-    (6, 'Coffe A', 25000, 50, 'coffe'),
-    (7, 'Coffe B', 30000, 50, 'coffe'),
-    (8, 'Snack A', 12000, 100, 'snack'),
-    (9, 'Snack B', 15000, 100, 'snack');
+INSERT INTO barang (id_barang, nama_barang, harga, tipe) VALUES
+    (1, 'Cranora', 18000, 'mocktail'),
+    (2, 'Solvia', 18000, 'mocktail'),
+    (3, 'Brezza', 18000, 'mocktail'),
+    (4, 'Matcha', 18000, 'milk base'),
+    (5, 'Chocolate', 18000, 'milk base'),
+    (6, 'Red Velvet', 18000, 'milk base'),
+    (7, 'Milky Berry', 18000, 'milk base'),
+    (8, 'Tubruk', 12000, 'coffe'),
+    (9, 'Berryboo', 18000, 'coffe'),
+    (10, 'Moora', 16000, 'coffe'),
+    (11, 'Americano', 15000, 'coffe'),
+    (12, 'caffra', 16000, 'coffe'),
+    (13, 'Cheese Roll', 15000, 'snack'),
+    (14, 'BBQ French Fries', 15000, 'snack'),
+    (15, 'Mix Platter', 18000, 'snack');
+
