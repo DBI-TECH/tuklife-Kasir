@@ -2,6 +2,7 @@
 include 'config/database.php';
 include 'includes/header.php';
 include 'includes/fungsi.php';
+<<<<<<< HEAD
 
 // Get statistics
 $totalBarang = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM barang"));
@@ -55,4 +56,9 @@ $recentTrans = mysqli_query($conn, "SELECT * FROM transaksi ORDER BY id_transaks
     </a>
 </div>
 
+=======
+?>
+<h1>Selamat Datang di Sistem Kasir</h1>
+<p>Gunakan menu di atas untuk mengelola data barang, transaksi, atau kalkulator.</p>
+>>>>>>> f9fdb3fd35fab447ae2718eaa32767cdbe800f7d
 <?php include 'includes/footer.php'; ?>

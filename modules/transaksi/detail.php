@@ -17,6 +17,7 @@ $qDetail = mysqli_query(
 );
 ?>
 
+<<<<<<< HEAD
 <h2><i class="fas fa-file-invoice"></i> Detail Transaksi</h2>
 
 <?php if (!$transaksi): ?>
@@ -86,3 +87,36 @@ $qDetail = mysqli_query(
 <?php endif; ?>
 
 <?php include '../../includes/footer.php'; ?>
+=======
+<h2>Detail Transaksi</h2>
+<?php if (!$transaksi): ?>
+    <p>Transaksi tidak ditemukan.</p>
+<?php else: ?>
+    <p><b>Tanggal:</b> <?= $transaksi['tgl_transaksi'] ?></p>
+    <?php if (array_key_exists('nama_pemesan', $transaksi)): ?>
+        <p><b>Nama Pemesan:</b> <?= htmlspecialchars($transaksi['nama_pemesan'] ?? '') ?></p>
+    <?php endif; ?>
+
+    <p><b>Total:</b> <?= rupiah($transaksi['total']) ?></p>
+
+    <table border="1" cellpadding="6" cellspacing="0">
+        <tr>
+            <th>Menu</th>
+            <th>Harga</th>
+            <th>Jumlah</th>
+            <th>Sub Total</th>
+        </tr>
+        <?php while($d = mysqli_fetch_assoc($qDetail)): ?>
+        <tr>
+            <td><?= htmlspecialchars($d['nama_barang']) ?></td>
+            <td><?= rupiah($d['harga']) ?></td>
+            <td><?= $d['jumlah'] ?></td>
+            <td><?= rupiah($d['sub_total']) ?></td>
+        </tr>
+        <?php endwhile; ?>
+    </table>
+<?php endif; ?>
+
+<?php include '../../includes/footer.php'; ?>
+
+>>>>>>> f9fdb3fd35fab447ae2718eaa32767cdbe800f7d
