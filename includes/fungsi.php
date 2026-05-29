@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <?php
-=======
-﻿<?php
->>>>>>> f9fdb3fd35fab447ae2718eaa32767cdbe800f7d
 function rupiah($angka) {
     return "Rp " . number_format($angka, 0, ',', '.');
 }
