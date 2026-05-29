@@ -8,11 +8,15 @@ $totalBarang = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM barang"));
 $totalTransaksi = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM transaksi"));
 $totalStok = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM stok"));
 
-// Get today's transactions
-$today = date('Y-m-d');
-$queryHariIni = "SELECT COUNT(*) as total, COALESCE(SUM(total), 0) as pendapatan FROM transaksi WHERE DATE(tgl_transaksi) = '$today'";
-$result = mysqli_query($conn, $queryHariIni);
-$dataHariIni = mysqli_fetch_assoc($result);
+// Get today's transactions (periode 12 siang ke 12 siang)
+$queryHariIni = "SELECT COUNT(*) as total, COALESCE(SUM(total), 0) as pendapatan 
+                FROM transaksi 
+                WHERE tgl_transaksi >= CONCAT(CURDATE(), ' 12:00:00')
+                AND tgl_transaksi < CONCAT(DATE_ADD(CURDATE(), INTERVAL 1 DAY), ' 12:00:00')";
+
+// ↓↓↓ INI YANG KURANG - Jalankan query dan ambil hasilnya ↓↓↓
+$resultHariIni = mysqli_query($conn, $queryHariIni);
+$dataHariIni = mysqli_fetch_assoc($resultHariIni);
 
 // Get recent transactions
 $recentTrans = mysqli_query($conn, "SELECT * FROM transaksi ORDER BY id_transaksi DESC LIMIT 5");
