@@ -4,8 +4,8 @@ $user = 'root';
 $pass = '';
 $db   = 'kasir_db';
 
-define('BASE_URL', '/tuklife-Kasir/');
-
+// Untuk struktur client-dbi/tuklife-Kasir
+define('BASE_URL', '/client-dbi/tuklife-Kasir/');
 
 $conn = mysqli_connect($host, $user, $pass, $db);
 if (!$conn) {

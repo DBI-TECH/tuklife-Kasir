@@ -34,16 +34,16 @@ $result = mysqli_query($conn, $query);
                     <td><?= $no++ ?></td>
                     <td><?= htmlspecialchars($row['nama_stok'] ?? '') ?></td>
                     <td>
-                        <span class="badge <?= ($row['stok'] <= 10) ? 'badge-danger' : 'badge-success' ?>">
+                        <span class="badge badge-<?= ($row['stok'] <= 10) ? 'danger' : 'success' ?>">
                             <?= $row['stok'] ?? 0 ?> unit
                         </span>
                     </div>
                     <td>
                         <a href="edit.php?id=<?= $row['id_stok'] ?>" class="action-link">
-                            <i class="fas fa-edit"></i>
+                            <i class="fas fa-edit edit-icons"> EDIT</i><br>
                         </a>
                         <a href="hapus.php?id=<?= $row['id_stok'] ?>" class="action-link danger" onclick="return confirm('Yakin ingin menghapus stok ini?')">
-                            <i class="fas fa-trash"></i>
+                            <i class="fas fa-trash edit-icon"> HAPUS</i>
                         </a>
                     </div>
                 </tr>

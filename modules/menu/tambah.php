@@ -21,18 +21,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 ?>
-<h2>Tambah Menu</h2>
-<a href="index.php">Kembali ke Menu</a>
+<div class="page-header">
+    <h2>Tambah Menu</h2>
+    <a href="index.php" class="back-btn"> Kembali ke Menu</a>
+</div>
 <form method="POST">
-    Nama Menu: <input type="text" name="nama_menu" required><br>
-    Harga: <input type="number" name="harga" required><br>
+
+    <div class="form-group">
+        <label>Nama Menu</label>
+        <input type="text" name="nama_menu" required>
+    </div>
+
+    <div class="form-group">
+        <label>Harga</label>
+        <input type="number" name="harga" required>
+    </div>
+
     <?php if (barang_has_tipe_column($conn)): ?>
-        Kategori: <select name="tipe" required>
+    <div class="form-group">
+        <label>Kategori</label>
+        <select name="tipe" required>
             <?php foreach ($availableTypes as $type): ?>
-                <option value="<?= htmlspecialchars($type) ?>"><?= htmlspecialchars(ucwords($type)) ?></option>
+                <option value="<?= htmlspecialchars($type) ?>">
+                    <?= htmlspecialchars(ucwords($type)) ?>
+                </option>
             <?php endforeach; ?>
-        </select><br>
+        </select>
+    </div>
     <?php endif; ?>
+
     <button type="submit">Simpan</button>
+
 </form>
 <?php include '../../includes/footer.php'; ?>

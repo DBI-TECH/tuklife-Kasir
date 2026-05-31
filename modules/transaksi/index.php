@@ -33,7 +33,7 @@ $result = mysqli_query($conn, $query);
                     <td><strong><?= rupiah($row['total']) ?></strong></td>
                     <td>
                         <a href="detail.php?id=<?= $row['id_transaksi'] ?>" class="action-link">
-                            <i class="fas fa-eye"></i> Lihat
+                            <i class="fas fa-eye mata"></i> Lihat
                         </a>
                      </div>
                     <td>

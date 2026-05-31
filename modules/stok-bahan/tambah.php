@@ -17,17 +17,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<h2>Tambah Stok Bahan</h2>
-<a href="index.php">Kembali ke Data Stok</a>
+<div class="page-header">
+    <h2 class="page-title">Tambah Stok Bahan</h2>
+    <a href="index.php" class="back-btn"> Kembali ke Data Stok</a>
+</div>
 
-<form method="POST">
-    Nama Stok:
-    <input type="text" name="nama_stok" required><br>
+<form method="POST" class="stok-form">
 
-    Jumlah Stok:
-    <input type="number" name="stok" required><br>
+    <div class="form-group">
+        <label>Nama Stok</label>
+        <input type="text" name="nama_stok" required>
+    </div>
 
-    <button type="submit">Simpan</button>
+    <div class="form-group">
+        <label>Jumlah Stok</label>
+        <input type="number" name="stok" required>
+    </div>
+
+    <button type="submit" class="submit-btn">
+        Simpan
+    </button>
+
 </form>
-
 <?php include '../../includes/footer.php'; ?>

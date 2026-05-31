@@ -192,61 +192,57 @@ foreach ($_SESSION['keranjang_menu'] as $id_barang => $qty) {
         <button type="submit" name="add_to_keranjang" value="1" class="btn btn-primary">
             <i class="fas fa-cart-plus"></i> Tambah ke Keranjang
         </button>
-        <button type="submit" name="submit_transaksi" value="1" class="btn btn-success">
-            <i class="fas fa-save"></i> Simpan Transaksi
-        </button>
-        <a href="?action=refresh" class="btn btn-danger" onclick="return confirm('Yakin ingin mengosongkan keranjang?')">
-            <i class="fas fa-trash"></i> Kosongkan Keranjang
-        </a>
     </div>
+
+    <?php if (!empty($keranjangItems)): ?>
+        <hr>
+        <h2><i class="fas fa-shopping-cart"></i> Keranjang Pesanan</h2>
+        <div class="table-wrapper">
+            <table class="table-striped">
+                <thead>
+                    <tr>
+                        <th>Menu</th>
+                        <th>Harga</th>
+                        <th>Jumlah</th>
+                        <th>Subtotal</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($keranjangItems as $item): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($item['nama']) ?></td>
+                        <td><?= rupiah($item['harga']) ?></td>
+                        <td><?= $item['qty'] ?></td>
+                        <td><?= rupiah($item['subtotal']) ?></td>
+                        <td>
+                            <a href="?action=hapus&id=<?= $item['id'] ?>" class="action-link action-link-danger" onclick="return confirm('Hapus item ini?')">
+                                <i class="fas fa-trash"></i> Hapus
+                            </a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+                <tfoot>
+                    <tr style="background: #f8fafc; font-weight: bold;">
+                        <td colspan="3"><strong>Total Keseluruhan</strong></td>
+                        <td colspan="2"><strong><?= rupiah($totalSementara) ?></strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div style="display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap;">
+                <button type="submit" name="submit_transaksi" value="1" class="btn btn-success">
+                    <i class="fas fa-save"></i> Simpan Transaksi
+                </button>
+                <a href="?action=refresh" class="btn btn-danger" onclick="return confirm('Yakin ingin mengosongkan keranjang?')">
+                    <i class="fas fa-trash"></i> Kosongkan Keranjang
+                </a>
+            </div>
+        </div>
+    <?php endif; ?>
 </form>
 
-<?php if (!empty($keranjangItems)): ?>
-    <hr>
-    <h2><i class="fas fa-shopping-cart"></i> Keranjang Pesanan</h2>
-    <div class="table-wrapper">
-        <table class="table-striped">
-            <thead>
-                <tr>
-                    <th>Menu</th>
-                    <th>Harga</th>
-                    <th>Jumlah</th>
-                    <th>Subtotal</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($keranjangItems as $item): ?>
-                <tr>
-                    <td><?= htmlspecialchars($item['nama']) ?></div>
-                    <td><?= rupiah($item['harga']) ?></div>
-                    <td><?= $item['qty'] ?></div>
-                    <td><?= rupiah($item['subtotal']) ?></div>
-                    <td>
-                        <a href="?action=hapus&id=<?= $item['id'] ?>" class="action-link action-link-danger" onclick="return confirm('Hapus item ini?')">
-                            <i class="fas fa-trash"></i> Hapus
-                        </a>
-                     </div>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-            <tfoot>
-                <tr style="background: #f8fafc; font-weight: bold;">
-                    <td colspan="3"><strong>Total Keseluruhan</strong></div>
-                    <td colspan="2"><strong><?= rupiah($totalSementara) ?></strong></div>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-<?php endif; ?>
-
 <style>
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-    margin-top: 12px;
-}
 .product-card {
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -319,6 +315,22 @@ foreach ($_SESSION['keranjang_menu'] as $id_barang => $qty) {
 .btn-danger {
     background: #e74c3c;
     color: white;
+}
+.table-wrapper {
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.action-link {
+    text-decoration: none;
+    color: #e74c3c;
 }
 </style>
 

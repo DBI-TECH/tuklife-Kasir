@@ -14,7 +14,7 @@
     <nav>
         <div class="nav-container">
             <div class="logo">
-                <img src="<?= BASE_URL ?>assets/img/logo-tuklife.png" style="height: 90px; width: auto; object-fit: contain;" alt="logo tuklife"></img>
+                <img src="<?= BASE_URL ?>assets/img/logop2.png" style="height: 90px; width: auto; object-fit: contain;" alt="logo tuklife">
             </div>
             <div class="nav-links">
                 <a href="<?= BASE_URL ?>index.php" class="<?= (basename($_SERVER['REQUEST_URI']) == 'index.php' && strpos($_SERVER['REQUEST_URI'], 'modules') === false) ? 'active' : '' ?>">
